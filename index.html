@@ -7,116 +7,35 @@
 <title>Expense Recorder Voice</title>
 <style>
 :root{--bg:#f6f7fb;--card:#fff;--ink:#131724;--muted:#697386;--line:#e6e8ef;--personal:#2fbf71;--personal-soft:#eaf8f0;--household:#3b82f6;--household-soft:#edf4ff;--couple:#9b51e0;--couple-soft:#f5edff;--business:#ff8a34;--business-soft:#fff2e8;--blue:#2266ea;--purple:#7a3df0;--pink:#d725bd;--danger:#c83f49;--ok:#16794a}
-*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}body{padding-bottom:82px}.app{max-width:780px;margin:0 auto;padding:0 14px 28px}.hero{margin:0 -14px 16px;padding:20px 20px 42px;background:linear-gradient(125deg,var(--blue),var(--purple) 58%,var(--pink));color:#fff;border-radius:0 0 28px 28px}.brand{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.hero h1{margin:0;font-size:28px;line-height:1.05;letter-spacing:-.03em}.version{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.26);padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800}.hero p{margin:8px 0 0;font-size:13px;color:rgba(255,255,255,.86)}.card{position:relative;margin-top:-34px;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px rgba(23,31,56,.07);padding:17px}.recordTitle{display:flex;align-items:center;gap:10px;margin-bottom:4px}.recordIcon{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#fff0df,#ffe5c4);color:#ff7a00;font-weight:900}.recordTitle strong{font-size:18px}.syntax{color:var(--muted);font-size:13px;line-height:1.5;margin:8px 0 10px}.syntax b:nth-of-type(1){color:var(--personal)}.syntax b:nth-of-type(2){color:var(--household)}.syntax b:nth-of-type(3){color:var(--couple)}.syntax b:nth-of-type(4){color:var(--business)}.entryWrap{position:relative}textarea{width:100%;min-height:110px;resize:vertical;padding:14px 52px 14px 14px;border:1.5px solid #d9ddea;border-radius:15px;font-size:17px;line-height:1.45;color:var(--ink);outline:none;background:#fff}textarea:focus{border-color:#7f83ff;box-shadow:0 0 0 4px rgba(105,92,255,.09)}.micBtn{position:absolute;right:9px;top:9px;width:38px;height:38px;border-radius:10px;border:0;background:#f2f4fa;color:#56627a;cursor:pointer;font-size:19px}.micBtn.listening{background:#ffe7eb;color:#d13b4a;animation:pulse 1.1s infinite}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}.listenBanner{display:none;margin-top:9px;padding:10px 12px;border-radius:12px;background:#fff1f3;border:1px solid #ffd5dc;color:#b4233b;font-size:12px;font-weight:800}.listenBanner.show{display:block}.listenBanner.ok{display:block;background:#edfff4;border-color:#ccefd9;color:#16794a}.voiceActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.voiceBtn{min-height:43px;border-radius:12px;border:1px solid var(--line);background:#f7f8fc;color:var(--ink);font-weight:800;cursor:pointer}.voiceBtn.stop{background:#fff1f3;border-color:#ffd5dc;color:#b4233b}.voiceBtn.clear{background:#fff;color:#b4233b}.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:13px 0 11px}.chip{border-radius:14px;padding:10px 8px;text-align:center;border:1px solid transparent}.chip strong{display:block;font-size:12px}.chip span{display:block;margin-top:2px;font-size:10px;color:var(--muted)}.personal{background:var(--personal-soft);border-color:#d7f1e1}.personal strong{color:#178b4d}.household{background:var(--household-soft);border-color:#dce9ff}.household strong{color:#2666d7}.couple{background:var(--couple-soft);border-color:#eadbff}.couple strong{color:#7c39bd}.business{background:var(--business-soft);border-color:#ffe2cb}.business strong{color:#dc6d1b}.primary{width:100%;min-height:50px;border:0;border-radius:14px;background:linear-gradient(95deg,var(--blue),var(--purple),var(--pink));color:#fff;font-size:15px;font-weight:850;cursor:pointer;box-shadow:0 8px 18px rgba(89,71,227,.2)}.secondary{width:100%;min-height:44px;margin-top:9px;border:1px solid var(--line);border-radius:13px;background:#f5f7fb;color:var(--ink);font-weight:800;cursor:pointer}.msg{min-height:18px;font-size:12px;margin-top:9px}.msg.ok{color:var(--ok)}.msg.err{color:var(--danger)}.example{margin-top:10px;padding:10px 11px;background:#f8f9fc;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:12px;line-height:1.55}.bottomNav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(780px,100%);z-index:50;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;padding:7px 8px calc(7px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);backdrop-filter:blur(18px);border-top:1px solid var(--line);box-shadow:0 -10px 30px rgba(20,27,51,.06)}.navBtn{border:0;background:transparent;color:#667085;min-height:52px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;font-weight:750}.navBtn .navIcon{font-size:18px;line-height:1}.navBtn.active{color:var(--blue);background:#eef4ff}@media(max-width:520px){.hero h1{font-size:25px}.chips{grid-template-columns:repeat(2,1fr)}}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}body{padding-bottom:82px}.app{max-width:780px;margin:0 auto;padding:0 14px 28px}.hero{margin:0 -14px 16px;padding:20px 20px 42px;background:linear-gradient(125deg,var(--blue),var(--purple) 58%,var(--pink));color:#fff;border-radius:0 0 28px 28px}.brand{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.hero h1{margin:0;font-size:28px;line-height:1.05;letter-spacing:-.03em}.version{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.26);padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800}.hero p{margin:8px 0 0;font-size:13px;color:rgba(255,255,255,.86)}.card{position:relative;margin-top:-34px;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px rgba(23,31,56,.07);padding:17px}.recordTitle{display:flex;align-items:center;gap:10px;margin-bottom:4px}.recordIcon{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#fff0df,#ffe5c4);color:#ff7a00;font-weight:900}.recordTitle strong{font-size:18px}.syntax{color:var(--muted);font-size:13px;line-height:1.5;margin:8px 0 10px}.entryWrap{position:relative}textarea{width:100%;min-height:110px;resize:vertical;padding:14px 52px 14px 14px;border:1.5px solid #d9ddea;border-radius:15px;font-size:17px;line-height:1.45;color:var(--ink);outline:none;background:#fff}.micBtn{position:absolute;right:9px;top:9px;width:38px;height:38px;border-radius:10px;border:0;background:#f2f4fa;color:#56627a;cursor:pointer;font-size:19px}.micBtn.listening{background:#ffe7eb;color:#d13b4a;animation:pulse 1.1s infinite}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}.listenBanner{display:none;margin-top:9px;padding:10px 12px;border-radius:12px;background:#fff1f3;border:1px solid #ffd5dc;color:#b4233b;font-size:12px;font-weight:800}.listenBanner.show{display:block}.listenBanner.ok{display:block;background:#edfff4;border-color:#ccefd9;color:#16794a}.voiceActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.voiceBtn{min-height:43px;border-radius:12px;border:1px solid var(--line);background:#f7f8fc;color:var(--ink);font-weight:800;cursor:pointer}.voiceBtn.stop{background:#fff1f3;border-color:#ffd5dc;color:#b4233b}.voiceBtn.clear{background:#fff;color:#b4233b}.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:13px 0 11px}.chip{border-radius:14px;padding:10px 8px;text-align:center;border:1px solid transparent}.chip strong{display:block;font-size:12px}.chip span{display:block;margin-top:2px;font-size:10px;color:var(--muted)}.personal{background:var(--personal-soft)}.household{background:var(--household-soft)}.couple{background:var(--couple-soft)}.business{background:var(--business-soft)}.primary{width:100%;min-height:50px;border:0;border-radius:14px;background:linear-gradient(95deg,var(--blue),var(--purple),var(--pink));color:#fff;font-size:15px;font-weight:850;cursor:pointer}.secondary{width:100%;min-height:44px;margin-top:9px;border:1px solid var(--line);border-radius:13px;background:#f5f7fb;color:var(--ink);font-weight:800;cursor:pointer}.msg{min-height:18px;font-size:12px;margin-top:9px}.msg.ok{color:var(--ok)}.msg.err{color:var(--danger)}.connection{margin:0 0 10px;padding:10px 12px;border-radius:12px;font-size:12px;font-weight:750}.connection.ok{background:#edfff4;border:1px solid #ccefd9;color:#16794a}.connection.warn{background:#fff8e8;border:1px solid #f4dfaa;color:#8b6508}.example{margin-top:10px;padding:10px 11px;background:#f8f9fc;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:12px;line-height:1.55}.bottomNav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(780px,100%);display:grid;grid-template-columns:repeat(5,1fr);padding:7px 8px;background:rgba(255,255,255,.96);border-top:1px solid var(--line)}.navBtn{border:0;background:transparent;color:#667085;min-height:52px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;font-weight:750}.navBtn.active{color:var(--blue);background:#eef4ff}@media(max-width:520px){.chips{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 <div class="app">
-  <div class="hero">
-    <div class="brand"><h1>Expense Recorder</h1><span class="version">v2.3.3</span></div>
-    <p>Voice capture</p>
-  </div>
-  <div class="card">
-    <div class="recordTitle"><div class="recordIcon">✎</div><strong>Quick Record</strong></div>
-    <div class="syntax">Say: amount + expense + who paid + type — <b>Personal</b>, <b>Household</b>, <b>Couple</b>, or <b>Business</b>.</div>
-    <div class="entryWrap">
-      <textarea id="transcript" placeholder="1500 dinner McDonald's Aileen couple"></textarea>
-      <button id="mic" class="micBtn" aria-label="Start listening">🎙</button>
-    </div>
-    <div id="banner" class="listenBanner">Listening… take your time. Pauses are okay.</div>
-    <div class="voiceActions">
-      <button id="doneSpeaking" class="voiceBtn stop">■ DONE SPEAKING</button>
-      <button id="clear" class="voiceBtn clear">🗑 CLEAR / DELETE</button>
-    </div>
-    <div class="chips">
-      <div class="chip personal"><strong>PERSONAL</strong><span>for one person</span></div>
-      <div class="chip household"><strong>HOUSEHOLD</strong><span>Manila home</span></div>
-      <div class="chip couple"><strong>COUPLE</strong><span>Aileen + George</span></div>
-      <div class="chip business"><strong>BUSINESS</strong><span>project expense</span></div>
-    </div>
-    <button id="send" class="primary">USE THIS EXPENSE</button>
-    <button id="retry" class="secondary">LISTEN AGAIN</button>
-    <div id="msg" class="msg"></div>
-    <div class="example">You control when recording ends. Pause while thinking, then press <b>DONE SPEAKING</b> when finished.<br><br>Example: <b>1500 dinner McDonald's Aileen couple</b><br>Business: <b>3000 Facebook ads George business Bridge</b></div>
-  </div>
-</div>
-<nav class="bottomNav">
-  <button class="navBtn active" data-page="record"><span class="navIcon">⚡</span><span>Record</span></button>
-  <button class="navBtn" data-page="expenses"><span class="navIcon">☷</span><span>Expenses</span></button>
-  <button class="navBtn" data-page="summary"><span class="navIcon">◔</span><span>Dashboard</span></button>
-  <button class="navBtn" data-page="projects"><span class="navIcon">▣</span><span>Projects</span></button>
-  <button class="navBtn" data-page="settings"><span class="navIcon">⚙</span><span>Settings</span></button>
-</nav>
+<div class="hero"><div class="brand"><h1>Expense Recorder</h1><span class="version">v2.3.4</span></div><p>Voice capture</p></div>
+<div class="card">
+<div id="connection" class="connection"></div>
+<div class="recordTitle"><div class="recordIcon">✎</div><strong>Quick Record</strong></div>
+<div class="syntax">Say: amount + expense + who paid + type — Personal, Household, Couple, or Business.</div>
+<div class="entryWrap"><textarea id="transcript" placeholder="1500 dinner McDonald's Aileen couple"></textarea><button id="mic" class="micBtn">🎙</button></div>
+<div id="banner" class="listenBanner">Listening… take your time. Pauses are okay.</div>
+<div class="voiceActions"><button id="doneSpeaking" class="voiceBtn stop">■ DONE SPEAKING</button><button id="clear" class="voiceBtn clear">🗑 CLEAR / DELETE</button></div>
+<div class="chips"><div class="chip personal"><strong>PERSONAL</strong><span>for one person</span></div><div class="chip household"><strong>HOUSEHOLD</strong><span>Manila home</span></div><div class="chip couple"><strong>COUPLE</strong><span>Aileen + George</span></div><div class="chip business"><strong>BUSINESS</strong><span>project expense</span></div></div>
+<button id="send" class="primary">USE THIS EXPENSE</button><button id="retry" class="secondary">LISTEN AGAIN</button><div id="msg" class="msg"></div>
+<div class="example">Open this voice recorder from the microphone inside the main Expense Recorder. After you press <b>USE THIS EXPENSE</b>, the voice window should close and the transcript should appear in the main app.</div>
+</div></div>
+<nav class="bottomNav"><button class="navBtn active" data-page="record">⚡<span>Record</span></button><button class="navBtn" data-page="expenses">☷<span>Expenses</span></button><button class="navBtn" data-page="summary">◔<span>Dashboard</span></button><button class="navBtn" data-page="projects">▣<span>Projects</span></button><button class="navBtn" data-page="settings">⚙<span>Settings</span></button></nav>
 <script>
-const $=id=>document.getElementById(id);
-const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
-let recognition=null,stream=null,keepListening=false,finalTranscript='';
-function setMsg(text,ok=false){$('msg').textContent=text||'';$('msg').className='msg '+(text?(ok?'ok':'err'):'')}
-function setBanner(text,ok=false){$('banner').textContent=text;$('banner').className='listenBanner show'+(ok?' ok':'')}
-async function ensureMicrophone(){if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error('No microphone API');stream=await navigator.mediaDevices.getUserMedia({audio:true});stream.getTracks().forEach(t=>t.stop());stream=null}
-function makeRecognition(){
-  recognition=new SpeechRecognition();
-  recognition.lang='en-US';
-  recognition.interimResults=true;
-  recognition.continuous=true;
-  recognition.maxAlternatives=1;
-  recognition.onstart=()=>{$('mic').classList.add('listening');setBanner('Listening… take your time. Pauses are okay.')};
-  recognition.onresult=e=>{
-    let interim='';
-    for(let i=e.resultIndex;i<e.results.length;i++){
-      const t=e.results[i][0].transcript.trim();
-      if(e.results[i].isFinal){finalTranscript+=(finalTranscript?' ':'')+t}else{interim+=(interim?' ':'')+t}
-    }
-    $('transcript').value=(finalTranscript+(interim?' '+interim:'')).trim();
-  };
-  recognition.onerror=e=>{
-    if(e.error==='no-speech'&&keepListening){setBanner('Still listening… continue when ready.');return}
-    if(e.error==='aborted'&&!keepListening)return;
-    setMsg('Voice recognition paused. Tap LISTEN AGAIN if needed.');
-  };
-  recognition.onend=()=>{
-    if(keepListening){
-      setTimeout(()=>{try{recognition.start()}catch(err){}},250);
-    }else{
-      $('mic').classList.remove('listening');
-      if($('transcript').value.trim())setBanner('Stopped — review or edit your answer.',true);
-      else setBanner('Ready — tap the microphone when you want to start.');
-    }
-  };
-}
-async function startListening(){
-  setMsg('');
-  if(keepListening)return;
-  setBanner('Checking microphone…');
-  if(!SpeechRecognition){setBanner('Voice recognition unavailable');setMsg('You can still type the expense and press USE THIS EXPENSE.');return}
-  try{await ensureMicrophone()}catch(err){setBanner('Microphone unavailable');setMsg('You can still type the expense and press USE THIS EXPENSE.');return}
-  finalTranscript=$('transcript').value.trim();
-  keepListening=true;
-  makeRecognition();
-  try{recognition.start()}catch(err){keepListening=false;$('mic').classList.remove('listening');setBanner('Ready — tap the microphone to try again.')}
-}
-function stopListening(){
-  keepListening=false;
-  if(recognition){try{recognition.stop()}catch(e){}}
-  $('mic').classList.remove('listening');
-  if($('transcript').value.trim())setBanner('Stopped — review or edit your answer.',true);else setBanner('Stopped.');
-}
-function clearAnswer(){
-  stopListening();
-  finalTranscript='';
-  $('transcript').value='';
-  setMsg('Answer cleared. You can record again.',true);
-  setBanner('Ready — tap the microphone when you want to start.');
-  $('transcript').focus();
-}
-function sendBack(){const text=$('transcript').value.trim();if(!text){setMsg('Say or type an expense first.');return}stopListening();if(window.opener&&!window.opener.closed){window.opener.postMessage({type:'expense-voice-transcript',text},'*');setBanner('Sent back to Expense Recorder.',true);setMsg('Returning to your expense form…',true);setTimeout(()=>window.close(),300)}else{navigator.clipboard?.writeText(text);setMsg('The recorder window is no longer open. The text has been copied if allowed.')}}
-function returnToApp(page){if(page==='record')return;if(window.opener&&!window.opener.closed){try{window.opener.postMessage({type:'expense-voice-nav',page},'*');window.opener.focus();window.close()}catch(e){window.close()}}else{setMsg('Return to the main Expense Recorder window to use '+(page==='summary'?'Dashboard':page)+'.')}}
-$('mic').addEventListener('click',startListening);
-$('retry').addEventListener('click',()=>{stopListening();setTimeout(startListening,200)});
-$('doneSpeaking').addEventListener('click',stopListening);
-$('clear').addEventListener('click',clearAnswer);
-$('send').addEventListener('click',sendBack);
-document.querySelectorAll('.navBtn').forEach(btn=>btn.addEventListener('click',()=>returnToApp(btn.dataset.page)));
-</script>
-</body>
-</html>
+const $=id=>document.getElementById(id);const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;let recognition=null,keepListening=false,finalTranscript='';
+function setMsg(t,ok=false){$('msg').textContent=t||'';$('msg').className='msg '+(t?(ok?'ok':'err'):'')}
+function setBanner(t,ok=false){$('banner').textContent=t;$('banner').className='listenBanner show'+(ok?' ok':'')}
+function updateConnection(){const c=$('connection');if(window.opener&&!window.opener.closed){c.className='connection ok';c.textContent='✓ Connected to the main Expense Recorder';}else{c.className='connection warn';c.textContent='Open this from the microphone inside the main Expense Recorder so USE THIS EXPENSE can return your entry.'}}
+async function ensureMicrophone(){const s=await navigator.mediaDevices.getUserMedia({audio:true});s.getTracks().forEach(t=>t.stop())}
+function makeRecognition(){recognition=new SpeechRecognition();recognition.lang='en-US';recognition.interimResults=true;recognition.continuous=true;recognition.onstart=()=>{$('mic').classList.add('listening');setBanner('Listening… take your time. Pauses are okay.')};recognition.onresult=e=>{let interim='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript.trim();if(e.results[i].isFinal)finalTranscript+=(finalTranscript?' ':'')+t;else interim+=(interim?' ':'')+t}$('transcript').value=(finalTranscript+(interim?' '+interim:'')).trim()};recognition.onerror=e=>{if(e.error==='no-speech'&&keepListening)return};recognition.onend=()=>{if(keepListening)setTimeout(()=>{try{recognition.start()}catch(e){}},250);else $('mic').classList.remove('listening')}}
+async function startListening(){if(keepListening)return;try{await ensureMicrophone()}catch(e){setMsg('Microphone unavailable. You can type instead.');return}finalTranscript=$('transcript').value.trim();keepListening=true;makeRecognition();try{recognition.start()}catch(e){keepListening=false}}
+function stopListening(){keepListening=false;if(recognition){try{recognition.stop()}catch(e){}}$('mic').classList.remove('listening');if($('transcript').value.trim())setBanner('Stopped — review or edit your answer.',true)}
+function clearAnswer(){stopListening();finalTranscript='';$('transcript').value='';setMsg('Answer cleared.',true)}
+function sendBack(){const text=$('transcript').value.trim();if(!text){setMsg('Say or type an expense first.');return}stopListening();if(window.opener&&!window.opener.closed){try{window.opener.postMessage({type:'expense-voice-transcript',text},'*');window.opener.focus();setBanner('Sent back to Expense Recorder.',true);setMsg('Returning to your expense form…',true);setTimeout(()=>window.close(),450)}catch(e){setMsg('Could not return the expense. Close this window and try the microphone from the main app again.')}}else{setMsg('This recorder was opened by itself, so there is no main Expense Recorder window to receive the entry. Open voice from the microphone in the main app.') }}
+function returnToApp(page){if(page==='record')return;if(window.opener&&!window.opener.closed){window.opener.postMessage({type:'expense-voice-nav',page},'*');window.opener.focus();window.close()}else setMsg('Open the main Expense Recorder first.')}
+$('mic').onclick=startListening;$('retry').onclick=()=>{stopListening();setTimeout(startListening,200)};$('doneSpeaking').onclick=stopListening;$('clear').onclick=clearAnswer;$('send').onclick=sendBack;document.querySelectorAll('.navBtn').forEach(b=>b.onclick=()=>returnToApp(b.dataset.page));updateConnection();
+</script></body></html>
